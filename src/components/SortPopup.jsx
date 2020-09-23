@@ -8,7 +8,7 @@ const SortPopup = ({ items }) => {
         setVisiblePopup(false)
     }
 
-    const activeLabel = items[activeItem]
+    const activeLabel = items[activeItem].name
     const [visiblePopup, setVisiblePopup] = useState(false)
     const sortRef = useRef()
     const onChangeVisiblePopup = () => {
@@ -25,7 +25,7 @@ const SortPopup = ({ items }) => {
         <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
-                className={visiblePopup ? 'rotated': ''}
+                    className={visiblePopup ? 'rotated' : ''}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
@@ -44,9 +44,9 @@ const SortPopup = ({ items }) => {
             {visiblePopup && <div className="sort__popup">
                 <ul>
                     {items &&
-                        items.map((name, index) => (
+                        items.map((obj, index) => (
                             <li className={activeItem === index ? 'active' : ''}
-                                onClick={() => OnChangeActiveItem(index)} key={`${name}_${index}`}>{name}</li>))
+                                onClick={() => OnChangeActiveItem(index)} key={`${obj.type}_${index}`}>{obj.name}</li>))
                     }
                 </ul>
             </div>}

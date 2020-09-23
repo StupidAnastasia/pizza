@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, { useState } from 'react'
 
 const Categories = ({ items }) => {
     const [activeItem, setActiveItem] = useState(null)
@@ -9,11 +9,11 @@ const Categories = ({ items }) => {
     return (
         <div className="categories">
             <ul>
-                <li className={activeItem === null ? 'active' : ''} onClick={ () => OnChangeActiveItem(null)}>Все</li>
-                {  items &&
+                <li className={activeItem === null ? 'active' : ''} onClick={() => OnChangeActiveItem(null)}>Все</li>
+                {items &&
                     items.map((name, index) => (
-                    <li className={activeItem === index ? 'active' : ''}
-                        onClick={ () => OnChangeActiveItem(index)} key={`${name}_${index}`}>{name}</li>))
+                        <li className={activeItem === index ? 'active' : ''}
+                            onClick={() => OnChangeActiveItem(index)} key={`${name}_${index}`}>{name}</li>))
                 }
             </ul>
         </div>
