@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 
-const Categories = ({ items }) => {
+
+const Categories = memo(({ items, onClickItem }) => {
     const [activeItem, setActiveItem] = useState(null)
 
     const OnChangeActiveItem = index => {
         setActiveItem(index)
+        onClickItem(index)
     }
     return (
         <div className="categories">
@@ -18,6 +20,6 @@ const Categories = ({ items }) => {
             </ul>
         </div>
     )
-}
+})
 
 export default Categories

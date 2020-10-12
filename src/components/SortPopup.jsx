@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { memo } from 'react'
 
-const SortPopup = ({ items }) => {
+const SortPopup = memo(({ items }) => {
     const [activeItem, setActiveItem] = useState(0)
 
     const OnChangeActiveItem = index => {
@@ -9,18 +10,24 @@ const SortPopup = ({ items }) => {
     }
 
     const activeLabel = items[activeItem].name
+
     const [visiblePopup, setVisiblePopup] = useState(false)
+
     const sortRef = useRef()
+
     const onChangeVisiblePopup = () => {
         setVisiblePopup(!visiblePopup)
     }
+
     const handleOutsideClick = e => {
         if (!e.path.includes(sortRef.current))
             setVisiblePopup(false)
     }
+
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick)
     }, [])
+    
     return (
         <div ref={sortRef} className="sort">
             <div className="sort__label">
@@ -52,6 +59,6 @@ const SortPopup = ({ items }) => {
             </div>}
         </div>
     )
-}
+})
 
 export default SortPopup
