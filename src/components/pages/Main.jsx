@@ -28,8 +28,8 @@ const Main = () => {
   const items = useSelector(({ pizzas }) => pizzas.items)
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
   const { category, sortBy } = useSelector(({ filters }) => filters)
+  const cartItems = useSelector(({ cart }) => cart.items)
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(getPizzas(category, sortBy))
   }, [category, sortBy])
@@ -65,6 +65,7 @@ const Main = () => {
           ? items.map((obj) => (
               <PizzaBlock
                 onClickAddPizza={handleAddPizzaToCart}
+                addedCount={cartItems[obj.id] && cartItems[obj.id].items.length}
                 key={obj.id}
                 {...obj}
               />

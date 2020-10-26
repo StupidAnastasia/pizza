@@ -10,6 +10,7 @@ const PizzaBlock = ({
   types,
   sizes,
   onClickAddPizza,
+  addedCount,
 }) => {
   const availableTypes = ['тонкое', 'традиционное']
   const availableSizes = [26, 30, 40]
@@ -72,8 +73,8 @@ const PizzaBlock = ({
         </ul>
       </div>
 
-      <div class="pizza-block__bottom">
-        <div class="pizza-block__price">от {price} ₽</div>
+      <div className="pizza-block__bottom">
+        <div className="pizza-block__price">от {price} ₽</div>
         <Button onClick={onAddpizza} className="button--add" outline>
           <svg
             width="12"
@@ -88,7 +89,7 @@ const PizzaBlock = ({
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {addedCount && <i>{addedCount}</i>}
         </Button>
       </div>
     </div>
@@ -102,6 +103,7 @@ PizzaBlock.propTypes = {
   sizes: PropTypes.arrayOf(PropTypes.number),
   price: PropTypes.number,
   onClickAddPizza: PropTypes.func,
+  addedCount: PropTypes.number,
 }
 
 PizzaBlock.defaultProps = {
