@@ -122,6 +122,7 @@ const Cart = () => {
                 name={obj.name}
                 type={obj.type}
                 size={obj.size}
+                imageUrl={obj.imageUrl}
                 totalPrice={items[obj.id].totalPrice}
                 totalCount={items[obj.id].items.length}
                 onRemove={onRevomeCartItem}
